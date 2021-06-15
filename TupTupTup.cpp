@@ -15,14 +15,10 @@ void TupTupTup::AsGhost()
 
 void TupTupTup::ActorBuild()
 {
-    if (il2cppi_is_initialized(TLGameManager__TypeInfo))
-    {
-        cout << "TLGameManager found" << endl;
-        TLGameManager* gameManager = (*TLGameManager__TypeInfo)->static_fields->G;
-        gameManager->fields._BuildType = TLBuildType__Enum::LivePerformer;
-        gameManager->fields._gameState->fields._d->fields._desiredNetworkedSpace = TLGameState_NetworkedSpace__Enum::LabyrinthEncounter; // TLGameState_NetworkedSpace__Enum::MasterServer
-        gameManager->fields._gameState->fields._d->fields._preventNetworkJoin = false;
-    }
+    TLGameManager* gameManager = (*TLGameManager__TypeInfo)->static_fields->G;
+    gameManager->fields._BuildType = TLBuildType__Enum::LivePerformer;
+    gameManager->fields._gameState->fields._d->fields._desiredNetworkedSpace = TLGameState_NetworkedSpace__Enum::Multiplayer;
+    gameManager->fields._gameState->fields._d->fields._preventNetworkJoin = false;
 }
 
 void TupTupTup::GetAllRooms()
